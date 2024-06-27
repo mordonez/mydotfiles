@@ -2,7 +2,7 @@
 # .zshrc
 #
 # @author Miguel Ordoñez
-# 
+#
 # original of Jeff Geerling
 #
 
@@ -59,11 +59,6 @@ source ${share_path}/zsh-history-substring-search/zsh-history-substring-search.z
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
 
-# Completions.
-#autoload -Uz compinit && compinit
-# Case insensitive.
-#zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
-
 # Git upstream branch syncer.
 # Usage: gsync master (checks out master, pull upstream, push origin).
 function gsync() {
@@ -85,13 +80,6 @@ function gsync() {
 
 # Tell homebrew to not autoupdate every single time I run it (just once a week).
 export HOMEBREW_AUTO_UPDATE_SECS=604800
-
-# Super useful Docker container oneshots.
-# Usage: dockrun, or dockrun [centos7|fedora27|debian9|debian8|ubuntu1404|etc.]
-# Run on arm64 if getting errors: `export DOCKER_DEFAULT_PLATFORM=linux/amd64`
-dockrun() {
- docker run -it geerlingguy/docker-"${1:-ubuntu1604}"-ansible /bin/bash
-}
 
 # Enter a running Docker container.
 function denter() {
@@ -133,3 +121,13 @@ export COMPOSER_MEMORY_LIMIT=-1
 #}
 #shopt -s extdebug
 #trap prod_command_trap DEBUG
+
+# Lando
+export PATH="/Users/mordonez/.lando/bin${PATH+:$PATH}"; #landopath
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+PATH=~/.console-ninja/.bin:$PATH
