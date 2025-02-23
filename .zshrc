@@ -14,7 +14,9 @@ export CLICOLOR_FORCE=1
 # Oh my ZSH HOME
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="Eastwood"
+#ZSH_THEME="Eastwood"
+# https://github.com/subnixr/minimal?tab=readme-ov-file
+ZSH_THEME="minimal"
 
 # Don't require escaping globbing characters in zsh.
 unsetopt nomatch
@@ -105,29 +107,10 @@ knownrm() {
 # Allow Composer to use almost as much RAM as Chrome.
 export COMPOSER_MEMORY_LIMIT=-1
 
-# Ask for confirmation when 'prod' is in a command string.
-#prod_command_trap () {
-#  if [[ $BASH_COMMAND == *prod* ]]
-#  then
-#    read -p "Are you sure you want to run this command on prod [Y/n]? " -n 1 -r
-#    if [[ $REPLY =~ ^[Yy]$ ]]
-#    then
-#      echo -e "\nRunning command \"$BASH_COMMAND\" \n"
-#    else
-#      echo -e "\nCommand was not run.\n"
-#      return 1
-#    fi
-#  fi
-#}
-#shopt -s extdebug
-#trap prod_command_trap DEBUG
+PATH=~/.console-ninja/.bin:$PATH
+export PATH="$(brew --prefix python)/libexec/bin:$PATH"
 
-# Lando
-export PATH="/Users/mordonez/.lando/bin${PATH+:$PATH}"; #landopath
-
-# NVM
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-PATH=~/.console-ninja/.bin:$PATH
+export PATH="/opt/homebrew/sbin:$PATH"
